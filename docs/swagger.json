@@ -136,7 +136,7 @@
                 "produces": [
                     "application/json"
                 ],
-                "summary": "Delete article tag",
+                "summary": "删除文章标签",
                 "parameters": [
                     {
                         "type": "integer",

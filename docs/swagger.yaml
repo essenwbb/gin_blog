@@ -63,7 +63,7 @@ paths:
           description: '{"code":200,"data":{},"msg":"ok"}'
           schema:
             type: string
-      summary: Delete article tag
+      summary: 删除文章标签
     put:
       parameters:
       - description: ID
