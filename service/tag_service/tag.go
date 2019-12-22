@@ -126,8 +126,8 @@ func (t *Tag) Export() (string, error) {
 		}
 	}
 
-	time := strconv.Itoa(int(time.Now().Unix()))
-	filename := "tags-" + time + export.EXT
+	timeNow := strconv.Itoa(int(time.Now().Unix()))
+	filename := "tags-" + timeNow + export.EXT
 
 	dirFullPath := export.GetExcelFullPath()
 	err = file.IsNotExistMkDir(dirFullPath)
@@ -144,12 +144,12 @@ func (t *Tag) Export() (string, error) {
 }
 
 func (t *Tag) Import(r io.Reader) error {
-	xlsx, err := excelize.OpenReader(r)
+	xlsxCur, err := excelize.OpenReader(r)
 	if err != nil {
 		return err
 	}
 
-	rows := xlsx.GetRows("标签信息")
+	rows := xlsxCur.GetRows("标签信息")
 	for irow, row := range rows {
 		if irow > 0 {
 			var data []string
