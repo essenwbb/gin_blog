@@ -9,12 +9,16 @@ import (
 )
 
 func getLogFilePath() string {
-	return fmt.Sprintf("%s", setting.AppSetting.LogSavePath)
+	return fmt.Sprintf("%s%s", setting.AppSetting.RuntimeRootPath, setting.AppSetting.LogSavePath)
 }
 
 func getLogFileFullPath() string {
 	prefixPath := getLogFilePath()
-	suffixPath := fmt.Sprintf("%s%s.%s", setting.AppSetting.LogSaveName, time.Now().Format(setting.AppSetting.LogSaveName), setting.AppSetting.LogFileExt)
+	suffixPath := fmt.Sprintf("%s%s.%s",
+		setting.AppSetting.LogSaveName,
+		time.Now().Format(setting.AppSetting.TimeFormat),
+		setting.AppSetting.LogFileExt,
+	)
 
 	return fmt.Sprintf("%s%s", prefixPath, suffixPath)
 }
