@@ -7,8 +7,10 @@ import (
 	_ "github.com/wuyueCreator/gin_blog/docs"
 	"github.com/wuyueCreator/gin_blog/middleware/jwt"
 	"github.com/wuyueCreator/gin_blog/pkg/setting"
+	"github.com/wuyueCreator/gin_blog/pkg/upload"
 	"github.com/wuyueCreator/gin_blog/routers/api"
 	v1 "github.com/wuyueCreator/gin_blog/routers/api/v1"
+	"net/http"
 )
 
 func InitRouter() *gin.Engine {
@@ -20,9 +22,13 @@ func InitRouter() *gin.Engine {
 
 	gin.SetMode(setting.ServerSetting.RunMode)
 
+	r.StaticFS("/upload/images", http.Dir(upload.GetImageFullPath()))
+
 	r.GET("/auth", api.GetAuth)
 
 	r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
+
+	r.POST("/upload", api.UploadImage)
 
 	apiv1 := r.Group("/api/v1")
 

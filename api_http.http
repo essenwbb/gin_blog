@@ -1,3 +1,8 @@
+
+
+
+
+###
 GET http://127.0.0.1:8080/api/v1/articles?tag_id=0&state=9999999&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3QiLCJwYXNzd29yZCI6InRlc3QxMjM0NTYiLCJleHAiOjE1NzY5NjA0NTQsImlzcyI6Imdpbi1ibG9nIn0.pjyYFirzT6SI6vBfcf6CP7v1msvX2s2x_ztRiZWe2U4
 Accept: application/json
 
@@ -10,6 +15,8 @@ GET http://localhost:8080/auth?username=test&password=test123456
 Accept: application/json
 
 ###
+
+###  tag
 
 GET http://localhost:8080/api/v1/tags?name=1&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3QiLCJwYXNzd29yZCI6InRlc3QxMjM0NTYiLCJleHAiOjE1NzcwMTc5NDUsImlzcyI6Imdpbi1ibG9nIn0.VUx9hC-OwOl6aJAfJ6F3UQwflB9zfxUZz1cBjocF5x8
 
@@ -27,3 +34,16 @@ PUT http://127.0.0.1:8080/api/v1/tags/1?name=2&modified_by=edit&pretty=
 
 ### 更改tag
 
+
+### upload
+
+POST http://localhost:8080/upload
+Content-Type: multipart/form-data; boundary=WebAppBoundary
+
+--WebAppBoundary
+Content-Disposition: form-data; name="image"; filename="20190809163514.jpg"
+
+< /Users/wubinbin/Downloads/20190809163514的副本.jpg
+--WebAppBoundary--
+
+###
