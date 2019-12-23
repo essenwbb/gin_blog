@@ -4,8 +4,10 @@ import (
 	"fmt"
 	"github.com/fvbock/endless"
 	"github.com/wuyueCreator/gin_blog/models"
+	"github.com/wuyueCreator/gin_blog/pkg/gredis"
 	"github.com/wuyueCreator/gin_blog/pkg/logging"
 	"github.com/wuyueCreator/gin_blog/pkg/setting"
+	"github.com/wuyueCreator/gin_blog/pkg/util"
 	"github.com/wuyueCreator/gin_blog/routers"
 	"log"
 	"syscall"
@@ -15,6 +17,8 @@ func main() {
 	setting.Setup()
 	models.Setup()
 	logging.Setup()
+	_ = gredis.Setup()
+	util.Setup()
 
 	endless.DefaultReadTimeOut = setting.ServerSetting.ReadTimeout
 	endless.DefaultWriteTimeOut = setting.ServerSetting.WriteTimeout
